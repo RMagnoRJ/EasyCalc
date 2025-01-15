@@ -18,6 +18,7 @@ public class Invoice {
     private PayMethod mode;
     private Double totalDaCompra;
     private Double valorDaNota;
+    private Integer quantidadeDeItens;
     
     public Invoice() {
     }
@@ -27,13 +28,15 @@ public class Invoice {
                     LocalDateTime dataDaCompra, 
                     ListaDeProdutos compras, 
                     PaymentMode pagamento,
-                    PayMethod mode) {
+                    PayMethod mode,
+                    Integer quantidadeDeItens) {
         this.notaFiscal = notaFiscal;
         this.cpf = cpf;
         this.dataDaCompra = dataDaCompra;
         this.compras = compras;
         this.pagamento = pagamento;
         this.mode = mode;
+        this.quantidadeDeItens = quantidadeDeItens;
 
     }
 
@@ -65,6 +68,10 @@ public class Invoice {
         return valorDaNota;
     }
 
+    public Integer getQuantidadeDeItens(){
+        return quantidadeDeItens;
+    }
+
     public void geraNota(){
 
         System.out.println("---------------------------------");
@@ -73,10 +80,11 @@ public class Invoice {
         System.out.println("Data da compra: " + getDataDaCompra().format(showDataHora));
         System.out.println("CPF: " + cpf.getCpf());
         System.out.println("---------------------------------");
-        for (int i = 0; i < compras.getProdutos().size(); i++){
-            System.out.println("        " + compras.getProdutos().get(i));
+        for (int i = 0 ; i < compras.getProdutos().size(); i++){
+            System.out.printf("          %.2f%n", compras.getProdutos().get(i));
         }
         System.out.println("---------------------------------");
+        System.out.println("Quantidade de itens: " + quantidadeDeItens);
         this.totalDaCompra = compras.geratotal();
         System.out.println("Total R$ " + String.format("%.2f", getTotalDaCompra()));
         System.out.println("---------------------------------");
