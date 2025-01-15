@@ -291,4 +291,57 @@ public class GeneralFunctions {
 
     }
 
+    public String checkString() {
+
+        boolean testaStr = true;
+
+        System.out.print(" ");
+        String recebeStr = inn.nextLine();
+
+        while (testaStr == true){
+
+            if (recebeStr.length() < 11){
+                System.out.println("\n\n### ERROR ### \nCPF INVÁLIDO!\n" +
+                                   "Você deve digitar o CPF com 11 NÚMEROS!\n" +
+                                   "             XXXXXXXXXxx             ");
+                System.out.print("\n> ");
+                recebeStr = inn.nextLine();
+            }  else if (recebeStr.length() > 11) {
+                System.out.println("\n\n### ERROR ### \nCPF INVÁLIDO!\n" +
+                                   "Você deve digitar apenas 11 NÚMEROS!\n" +
+                                   "             XXXXXXXXXxx             ");
+                System.out.print("\n> ");
+                recebeStr = inn.nextLine();
+            } else if (recebeStr.length() == 11){
+                testaStr = false;
+            }
+        }
+        return recebeStr;
+    }
+
+
+    public String checkOperador(){
+
+        boolean testaStr = true;
+        String recebeStr="";
+
+        while (testaStr == true){
+
+            System.out.print(" ");
+            recebeStr = inn.nextLine();
+
+            if (recebeStr == null || recebeStr == "" || recebeStr == " "){
+                testaStr = true;
+            } else if (recebeStr.charAt(0) == '+'){
+                testaStr = false;
+            }  else if (recebeStr.charAt(0) == '-') {
+                testaStr = false;
+            } else if (recebeStr.charAt(0) == '*'){
+                testaStr = false;
+            } else if (recebeStr.charAt(0) == '='){
+                testaStr = false;
+            } 
+        }
+        return recebeStr;
+    }
 }
