@@ -93,6 +93,7 @@ public class Program {
         }
         System.out.println("\n<<< TOTAL >>> R$ " + String.format("%.2f", listaDeCompras.geratotal()));
         System.out.println("\nForma de pagamento: \n");
+        // Forma de pagamento
         int i = 1;
         for (PaymentMode mode : PaymentMode.values()){
             System.out.println("["+i+"] " + mode);
